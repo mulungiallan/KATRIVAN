@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katrivan Business Enterprises Limited - Kayunga</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* ============ HEADER & NAVIGATION ============ */
+        header {
+            background: #1a1a2e;
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: clamp(1.1rem, 2.8vw, 1.7rem);
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #d4af37;
+        }
+
+        .top-bar {
+            background: #d4af37;
+            color: #1a1a2e;
+            text-align: center;
+            padding: 0.4rem 5%;
+            font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: clamp(1rem, 2vw, 2rem);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        .cta-button {
+            background: #d4af37;
+            color: #1a1a2e;
+            padding: 0.6rem 1.3rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            white-space: nowrap;
+            font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+        }
+
+        .cta-button:hover {
+            background: #b8960c;
+            transform: scale(1.05);
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: clamp(3rem, 8vw, 6rem) 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h1, .hero p, .hero .location-badge, .hero .cta-button, .hero .slogan {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.6rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            color: #d4af37;
+        }
+
+        .hero p {
+            font-size: clamp(0.95rem, 2vw, 1.2rem);
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            opacity: 0.9;
+            padding: 0 1rem;
+        }
+
+        .slogan {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: #d4af37;
+            font-style: italic;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .location-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============ SECTION COMMONS ============ */
+        .about, .services, .gallery, .team, .testimonials, .faq, .collaborators, .why-us, .contact, .social-media {
+            padding: clamp(2.5rem, 6vw, 5rem) 5%;
+        }
+
+        .about h2, .services h2, .gallery h2, .team h2, .testimonials h2, .faq h2, .collaborators h2, .why-us h2, .contact h2, .social-media h2 {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            margin-bottom: 1.5rem;
+            color: #1a1a2e;
+            text-align: center;
+        }
+
+        .about {
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            padding: 0 0.5rem;
+        }
+
+        /* ============ PHOTO GALLERY ============ */
+        .gallery {
+            background: white;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(1rem, 2.5vw, 1.5rem);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            aspect-ratio: 4/3;
+            background: #f0f0f0;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+            text-align: left;
+        }
+
+        /* ============ TEAM SECTION ============ */
+        .team {
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .team-card {
+            background: white;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid #d4af37;
+            text-align: center;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .team-avatar {
+            width: clamp(70px, 12vw, 90px);
+            height: clamp(70px, 12vw, 90px);
+            background: #1a1a2e;
+            color: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: bold;
+            margin: 0 auto 1.2rem;
+            border: 3px solid #d4af37;
+        }
+
+        .team-card h3 {
+            color: #1a1a2e;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-role {
+            color: #d4af37;
+            font-weight: 600;
+            font-size: clamp(0.85rem, 1.3vw, 1rem);
+            margin-bottom: 0.8rem;
+        }
+
+        .team-card p {
+            color: #666;
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            font-style: italic;
+        }
+
+        /* ============ SERVICES ============ */
+        .services {
+            text-align: center;
+            background: #f4f4f4;
+        }
+
+        .services h2 {
+            color: #1a1a2e;
+        }
+
+        .services-intro {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            color: #555;
+            padding: 0 1rem;
+        }
+
+        .service-category {
+            margin-bottom: clamp(2rem, 5vw, 4rem);
+        }
+
+        .service-category h3 {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #d4af37;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: clamp(0.8rem, 2vw, 1.5rem);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 clamp(0.5rem, 2vw, 1rem);
+        }
+
+        .service-item {
+            background: white;
+            padding: clamp(1rem, 2.5vw, 1.5rem);
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-bottom: 4px solid transparent;
+            min-width: 0;
+        }
+
+        .service-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-bottom: 4px solid #d4af37;
+        }
+
+        .service-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-icon {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-item h4 {
+            color: #1a1a2e;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+        }
+
+        .service-item p {
+            font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+            color: #666;
+        }
+
+        .export-badge, .dual-market-badge {
+            display: inline-block;
+            background: #1a1a2e;
+            color: #d4af37;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: clamp(0.6rem, 1vw, 0.75rem);
+            font-weight: bold;
+            margin-top: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .dual-market-badge {
+            background: #d4af37;
+            color: #1a1a2e;
+        }
+
+        .photo-badge {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            margin-top: 0.3rem;
+            letter-spacing: 0.5px;
+        }
+
+        .quote-bar {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(1rem, 3vw, 2rem);
+            flex-wrap: wrap;
+        }
+
+        .quote-bar p {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+        }
+
+        .quote-btn {
+            background: #d4af37;
+            color: #1a1a2e;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: clamp(0.85rem, 1.3vw, 1rem);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            white-space: nowrap;
+        }
+
+        .quote-btn:hover {
+            background: #b8960c;
+            transform: scale(1.05);
+        }
+
+        /* ============ TESTIMONIALS ============ */
+        .testimonials {
+            background: white;
+            text-align: center;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .testimonial-card {
+            background: #f9f9f9;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            position: relative;
+            text-align: left;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card .quote-icon {
+            font-size: 2.5rem;
+            color: #d4af37;
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+        }
+
+        .testimonial-stars {
+            color: #d4af37;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .testimonial-card p {
+            font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+            color: #555;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .testimonial-author .author-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #1a1a2e;
+            color: #d4af37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .testimonial-author h4 {
+            color: #1a1a2e;
+            font-size: 0.95rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .testimonial-author span {
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        /* ============ FAQ ============ */
+        .faq {
+            background: #f4f4f4;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #1a1a2e;
+            font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+            transition: color 0.3s;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            color: #d4af37;
+        }
+
+        .faq-question .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            color: #d4af37;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            padding: 0 1.5rem 1.2rem;
+            color: #555;
+            font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+            line-height: 1.6;
+        }
+
+        /* ============ SOCIAL MEDIA ============ */
+        .social-media {
+            background: white;
+            text-align: center;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: clamp(1rem, 2.5vw, 1.5rem);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .social-card {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .social-icon-large {
+            font-size: 2.5rem;
+        }
+
+        .social-card h3 {
+            color: #1a1a2e;
+            font-size: 1rem;
+        }
+
+        .social-card .coming-soon {
+            background: #d4af37;
+            color: #1a1a2e;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============ COLLABORATORS ============ */
+        .collaborators {
+            text-align: center;
+            background: #f4f4f4;
+        }
+
+        .collaborators h2 {
+            color: #1a1a2e;
+        }
+
+        .collaborators-intro {
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            color: #555;
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            padding: 0 1rem;
+        }
+
+        .collaborator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .collaborator-card {
+            background: white;
+            padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2vw, 2rem);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #d4af37;
+        }
+
+        .collaborator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .collaborator-card .partner-icon {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .collaborator-card h3 {
+            color: #1a1a2e;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .collaborator-card p {
+            color: #666;
+            font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+        }
+
+        /* ============ WHY US ============ */
+        .why-us {
+            background: white;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: clamp(1rem, 2.5vw, 2rem);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .feature {
+            background: #f9f9f9;
+            padding: clamp(1.2rem, 2.5vw, 2rem);
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature .icon {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+        }
+
+        .feature p {
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            color: #555;
+        }
+
+        /* ============ WHATSAPP FLOAT ============ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: clamp(15px, 3vw, 30px);
+            right: clamp(15px, 3vw, 30px);
+            background: #25D366;
+            color: white;
+            width: clamp(50px, 8vw, 60px);
+            height: clamp(50px, 8vw, 60px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* ============ CONTACT ============ */
+        .contact {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: clamp(1rem, 4vw, 3rem);
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .contact-info-item a {
+            color: #d4af37;
+            text-decoration: none;
+            transition: color 0.3s;
+            word-break: break-all;
+        }
+
+        .contact-info-item a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .contact-info-item .icon {
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+        }
+
+        .email-note {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+        }
+
+        .working-hours-highlight {
+            background: rgba(212, 175, 55, 0.15);
+            border: 2px dashed #d4af37;
+            border-radius: 10px;
+            padding: 1rem 2rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+        }
+
+        .working-hours-highlight .clock-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 0 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+            font-family: inherit;
+            width: 100%;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            background: #d4af37;
+            color: #1a1a2e;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #b8960c;
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background: #0f0f1a;
+            color: white;
+            text-align: center;
+            padding: clamp(1.5rem, 3vw, 2rem) 5%;
+            font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+        }
+
+        footer span {
+            color: #d4af37;
+        }
+
+        footer p {
+            padding: 0 1rem;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 4%;
+                gap: 1rem;
+            }
+            .hamburger {
+                display: flex;
+            }
+            nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+            }
+            nav.active {
+                max-height: 500px;
+            }
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.8rem;
+                padding: 1rem 0;
+            }
+            nav a {
+                display: block;
+                padding: 0.5rem;
+                font-size: 1rem;
+            }
+            .header-cta {
+                display: none;
+            }
+            .hero {
+                padding: 3rem 4%;
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+            }
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            .collaborator-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+            .contact-details {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.8rem 3%;
+            }
+            .logo {
+                font-size: 0.9rem;
+            }
+            .hero {
+                padding: 2.5rem 3%;
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
+            }
+            .service-item {
+                padding: 0.8rem;
+            }
+            .service-img {
+                height: 80px;
+            }
+            .service-icon {
+                font-size: 1.8rem;
+            }
+            .service-item h4 {
+                font-size: 0.85rem;
+            }
+            .service-item p {
+                font-size: 0.72rem;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .social-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.6rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+            }
+            .feature {
+                padding: 1rem;
+            }
+            .feature .icon {
+                font-size: 1.6rem;
+            }
+            .feature h3 {
+                font-size: 0.85rem;
+            }
+            .feature p {
+                font-size: 0.75rem;
+            }
+            .collaborator-card {
+                padding: 1.2rem;
+            }
+            .contact-info-item {
+                font-size: 0.8rem;
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 0.85rem;
+                padding: 0.7rem;
+            }
+            .working-hours-highlight {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.8rem;
+            }
+            .quote-bar {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+            .logo {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .team-grid {
+                max-width: 900px;
+            }
+            .service-grid {
+                max-width: 1100px;
+                gap: 2rem;
+            }
+            .gallery-grid {
+                max-width: 1100px;
+            }
+            .testimonial-grid {
+                max-width: 1100px;
+            }
+            .features-grid {
+                max-width: 1100px;
+                gap: 2.5rem;
+            }
+            .collaborator-grid {
+                max-width: 900px;
+                gap: 2.5rem;
+            }
+            .social-grid {
+                max-width: 900px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        🕐 Open Daily: 7:00 AM — 7:00 PM | Kayunga District, Uganda
+    </div>
+
+    <header>
+        <div class="logo">KATRIVAN <span>BUSINESS ENTERPRISES LIMITED</span></div>
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="navMenu">
+            <ul>
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
+                <li><a href="#team" onclick="closeMenu()">Team</a></li>
+                <li><a href="#services" onclick="closeMenu()">Services</a></li>
+                <li><a href="#testimonials" onclick="closeMenu()">Reviews</a></li>
+                <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
+                <li><a href="#collaborators" onclick="closeMenu()">Partners</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="cta-button header-cta" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get In Touch</button>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="location-badge">📍 Based in Kayunga District, Uganda</div>
+        <h1>Welcome to <span class="highlight">Katrivan Business Enterprises Limited</span></h1>
+        <p class="slogan">"Growing Wealth, Building Futures — Your Trusted Partner in Agribusiness & Investment"</p>
+        <p>Your trusted partner in agribusiness, livestock trading, wholesale agro export, and financial services. Serving both <strong>local and international markets</strong> with quality, integrity, and reliability.</p>
+        <button class="cta-button" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">Explore Our Services</button>
+    </section>
+
+    <section class="about" id="about">
+        <h2>About Us</h2>
+        <p><strong>Katrivan Business Enterprises Limited</strong> is a diversified enterprise proudly based in <strong>Kayunga District, Uganda</strong>. We serve <strong>both local and foreign markets</strong>, delivering top-quality agricultural products and business solutions. We are committed to empowering our community through multiple pillars: <strong>quality livestock and crop farming</strong>, <strong>wholesale agro-products for export</strong>, <strong>accessible financial services</strong>, and <strong>reliable communication solutions</strong>. In partnership with esteemed collaborators like <strong>Bamul Enterprises</strong> and <strong>Kandrenah Group of Companies</strong>, we deliver excellence across the agricultural value chain — from farm to global markets. Katrivan is your one-stop shop for quality, trust, and service.</p>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="gallery" id="gallery">
+        <h2>📸 Our Photo Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="cows.jpg" alt="Cows at Katrivan Enterprises" loading="lazy">
+                <div class="gallery-caption">🐄 Healthy Dairy & Beef Cattle</div>
+            </div>
+            <div class="gallery-item">
+                <img src="goats.jpg" alt="Goats at Katrivan Enterprises" loading="lazy">
+                <div class="gallery-caption">🐐 Quality Meat & Dairy Goats</div>
+            </div>
+            <div class="gallery-item">
+                <img src="coffee.jpg" alt="Coffee at Katrivan Enterprises" loading="lazy">
+                <div class="gallery-caption">☕ Premium Arabica & Robusta Coffee</div>
+            </div>
+            <div class="gallery-item">
+                <img src="pineapple.jpg" alt="Pineapple at Katrivan Enterprises" loading="lazy">
+                <div class="gallery-caption">🍍 Sweet Naturally Ripened Pineapples</div>
+            </div>
+            <div class="gallery-item">
+                <img src="maize.jpg" alt="Maize at Katrivan Enterprises" loading="lazy">
+                <div class="gallery-caption">🌽 Quality Maize for Consumption & Feed</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <h2>Our Leadership</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">KM</div>
+                <h3>Katende Marvin</h3>
+                <div class="team-role">Chief Executive Officer & Owner</div>
+                <p>"Driving Katrivan Business Enterprises Limited with vision, integrity, and a commitment to agricultural excellence."</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">MA</div>
+                <h3>Mulungi Allan</h3>
+                <div class="team-role">Shareholder & General Secretary</div>
+                <p>"Ensuring strong governance and strategic growth for Katrivan's long-term success."</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our Products & Services</h2>
+        <p class="services-intro">We proudly offer a wide range of products and services for <strong>both local and international markets</strong> across four categories.</p>
+
+        <div class="service-category">
+            <h3>🐄 Livestock — Buy & Sell</h3>
+            <div class="service-grid">
+                <div class="service-item">
+                    <img src="cows.jpg" alt="Cows" class="service-img" loading="lazy">
+                    <h4>Cows</h4>
+                    <p>Healthy dairy and beef cattle available for sale.</p>
+                    <span class="dual-market-badge">LOCAL & EXPORT</span>
+                    <span class="photo-badge">📸 PHOTO</span>
+                </div>
+                <div class="service-item">
+                    <img src="goats.jpg" alt="Goats" class="service-img" loading="lazy">
+                    <h4>Goats</h4>
+                    <p>Quality meat and dairy goats at competitive prices.</p>
+                    <span class="dual-market-badge">LOCAL & EXPORT</span>
+                    <span class="photo-badge">📸 PHOTO</span>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🐖</div>
+                    <h4>Pigs</h4>
+                    <p>Well-bred pigs for farming and commercial purposes.</p>
+                    <span class="dual-market-badge">LOCAL & EXPORT</span>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🐔</div>
+                    <h4>Hens</h4>
+                    <p>Local and improved chicken breeds for eggs and meat.</p>
+                    <span class="dual-market-badge">LOCAL & EXPORT</span>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🦃</div>
+                    <h4>Turkey</h4>
+                    <p>Healthy turkeys raised in a free-range environment.</p>
+                    <span class="dual-market-badge">LOCAL & EXPORT</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-category">
+            <h3>🌾 Crops We Grow</h3>
+            <div class="service-grid">
+                <div class="service-item">
+                    <img src="coffee.jpg" alt="Coffee" class="service-img" loading="lazy">
+                    <h4>Coffee</h4>
+                    <p>Premium Arabica and Robusta coffee beans.</p>
+                    <span class="dual-market-badge">LOCAL & EXPORT</span>
+                    <span class="photo-badge">📸 PHOTO</span>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🍌</div>
+                    <h4>Bananas</h4>
+                    <p>Sweet matoke, dessert bananas, and plantains.</p>
+                    <span class="dual-market-badge">LOCAL & EXPORT</span>
+                </div>
+                <div class="service-item">
+                    <img src="pineapple.jpg" alt="Pineapple" class="service-img" loading="lazy">
+                    <h4>Pineapple</h4>
+                    <p>Juicy, naturally ripened pineapples.</p>
+                    <span class="dual-market-badge">LOCAL & EXPORT</span>
+                    <span class="photo-badge">📸 PHOTO</span>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🍉</div>
+                    <h4>Watermelons</h4>
+                    <p>Large, sweet watermelons perfect for all markets.</p>
+                    <span class="dual-market-badge">LOCAL & EXPORT</span>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🥑</div>
+                    <h4>Avocado</h4>
+                    <p>Rich, buttery avocados — Hass and local varieties.</p>
+                    <span class="dual-market-badge">LOCAL & EXPORT</span>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🌿</div>
+                    <h4>Cassava</h4>
+                    <p>High-yield cassava for food and industrial use.</p>
+                    <span class="dual-market-badge">LOCAL & EXPORT</span>
+                </div>
+                <div class="service-item">
+                    <img src="maize.jpg" alt="Maize" class="service-img" loading="lazy">
+                    <h4>Maize</h4>
+                    <p>Quality maize for consumption and animal feed.</p>
+                    <span class="dual-market-badge">LOCAL & EXPORT</span>
+                    <span class="photo-badge">📸 PHOTO</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-category">
+            <h3>🚢 Wholesale Agro Products for Export</h3>
+            <div class="service-grid">
+                <div class="service-item">
+                    <div class="service-icon">📦</div>
+                    <h4>Bulk Agro Supplies</h4>
+                    <p>Large-scale sourcing of quality crops for international markets.</p>
+                    <span class="export-badge">EXPORT</span>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🏷️</div>
+                    <h4>Wholesale Trading</h4>
+                    <p>Competitive wholesale pricing on all agricultural commodities.</p>
+                    <span class="export-badge">EXPORT</span>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🔍</div>
+                    <h4>Quality Inspection</h4>
+                    <p>All export produce meets international quality and safety standards.</p>
+                    <span class="export-badge">EXPORT</span>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🤝</div>
+                    <h4>Export Partnerships</h4>
+                    <p>Reliable supply chain partnerships for consistent export delivery.</p>
+                    <span class="export-badge">EXPORT</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-category">
+            <h3>📱 Financial & Communication Services</h3>
+            <div class="service-grid">
+                <div class="service-item">
+                    <div class="service-icon">💸</div>
+                    <h4>Mobile Money</h4>
+                    <p>Send, receive, and withdraw money via MTN & Airtel.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">📋</div>
+                    <h4>Agent & Line Registration</h4>
+                    <p>SIM card registration and mobile money agent services.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">📱</div>
+                    <h4>Phones on Credit</h4>
+                    <p>Buy smartphones & feature phones on installment plans.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🌍</div>
+                    <h4>Overseas Money Transfer</h4>
+                    <p>Reliable international remittance services — fast & secure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="quote-bar">
+        <p>💬 <strong>Interested in our products?</strong> Get a personalized price quote today!</p>
+        <button class="quote-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Request a Quote</button>
+    </div>
+
+    <section class="testimonials" id="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p>"Katrivan supplied me with 20 healthy goats for my farm in Jinja. The delivery was on time and the animals were in excellent condition. I highly recommend their livestock services!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JO</div>
+                    <div>
+                        <h4>James Ochieng</h4>
+                        <span>Farmer, Jinja District</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p>"I've been buying coffee and maize from Katrivan for export for over a year now. Their quality is consistent and prices are fair. A reliable partner for any serious agro-exporter."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">NK</div>
+                    <div>
+                        <h4>Nakamya Kizito</h4>
+                        <span>Agro-Exporter, Kampala</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p>"The mobile money and phone credit services at Katrivan are a lifesaver! I got a smartphone on installment and it was so easy. Friendly staff and great customer care."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SA</div>
+                    <div>
+                        <h4>Sarah Apio</h4>
+                        <span>Teacher, Kayunga Town</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p>"Katrivan helped me send money to my family in the UK quickly and securely. The overseas transfer service is fast and trustworthy. Thank you Katrivan team!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">PM</div>
+                    <div>
+                        <h4>Peter Mugisha</h4>
+                        <span>Businessman, Kayunga District</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What types of livestock do you sell?<span class="faq-icon">+</span></div>
+                <div class="faq-answer"><p>We sell a wide range of healthy livestock including cows (dairy and beef), goats (meat and dairy), pigs, hens (local and improved breeds), and turkeys. All our animals are well-bred, vaccinated, and raised in quality conditions. We serve both local customers and international buyers. Visit us in Kayunga or contact us to check current availability.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Do you deliver products to foreign/international markets?<span class="faq-icon">+</span></div>
+                <div class="faq-answer"><p>Yes! We export agricultural products to international markets. Our export-ready products include coffee, maize, bananas, avocados, pineapples, and more. All export produce meets international quality and safety standards. We handle bulk sourcing, quality inspection, and logistics through reliable supply chain partners.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">How can I request a price quote?<span class="faq-icon">+</span></div>
+                <div class="faq-answer"><p>Getting a quote is easy! Simply visit our Contact section, fill out the form with details of what you're looking for (product type, quantity, location), and we'll get back to you with competitive pricing. You can also call us directly at 0702 013 189 or WhatsApp us for faster responses.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What mobile money services do you offer?<span class="faq-icon">+</span></div>
+                <div class="faq-answer"><p>We offer full mobile money services including sending and receiving money via MTN Mobile Money and Airtel Money, cash withdrawals, bill payments, and agent registration services. We also assist with SIM card registration for all major networks in Uganda.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Can I buy a phone on credit?<span class="faq-icon">+</span></div>
+                <div class="faq-answer"><p>Yes! We offer smartphones and feature phones on flexible credit/installment plans. You can pay in installments over an agreed period. Terms and conditions apply — visit our shop in Kayunga District to discuss available options and find a plan that works for you.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">How do I send money overseas through Katrivan?<span class="faq-icon">+</span></div>
+                <div class="faq-answer"><p>Our overseas money transfer service is fast, secure, and reliable. Visit our location in Kayunga District with your recipient's details and the amount you wish to send. We process international remittances through trusted partner networks. Contact us for current exchange rates and transfer fees.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What are your working hours?<span class="faq-icon">+</span></div>
+                <div class="faq-answer"><p>We are open <strong>Monday through Sunday, from 7:00 AM to 7:00 PM</strong>. Whether you need livestock, crops, financial services, or phones — visit us any day of the week during these hours. You can also reach us by phone or WhatsApp outside working hours.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-media" id="social">
+        <h2>Connect With Us</h2>
+        <div class="social-grid">
+            <a href="#" class="social-card" onclick="alert('WhatsApp: Coming soon! For now, chat with us via the green WhatsApp button.'); return false;">
+                <span class="social-icon-large">💬</span><h3>WhatsApp</h3><span class="coming-soon">Coming Soon</span>
+            </a>
+            <a href="#" class="social-card" onclick="alert('Facebook page coming soon! Follow us for updates.'); return false;">
+                <span class="social-icon-large">📘</span><h3>Facebook</h3><span class="coming-soon">Coming Soon</span>
+            </a>
+            <a href="#" class="social-card" onclick="alert('TikTok account coming soon! Watch our farm videos.'); return false;">
+                <span class="social-icon-large">🎵</span><h3>TikTok</h3><span class="coming-soon">Coming Soon</span>
+            </a>
+            <a href="#" class="social-card" onclick="alert('X (Twitter) coming soon! Stay updated with our latest news.'); return false;">
+                <span class="social-icon-large">𝕏</span><h3>X (Twitter)</h3><span class="coming-soon">Coming Soon</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="collaborators" id="collaborators">
+        <h2>Our Trusted Collaborators</h2>
+        <p class="collaborators-intro">We are proud to work alongside these esteemed partners to deliver exceptional value to our clients.</p>
+        <div class="collaborator-grid">
+            <div class="collaborator-card">
+                <div class="partner-icon">🏢</div>
+                <h3>Bamul Enterprises</h3>
+                <p>A trusted partner in the agricultural and trading sector, working together to strengthen supply chains and market reach across Uganda and beyond.</p>
+            </div>
+            <div class="collaborator-card">
+                <div class="partner-icon">🏭</div>
+                <h3>Kandrenah Group of Companies</h3>
+                <p>A diversified group of companies collaborating with Katrivan on large-scale agro-export, logistics, and business development initiatives.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <h2>Why Choose Katrivan?</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="icon">✅</div>
+                <h3>Quality Assured</h3>
+                <p>All our livestock and crops meet high health and quality standards for both local and international markets.</p>
+            </div>
+            <div class="feature">
+                <div class="icon">💰</div>
+                <h3>Competitive Prices</h3>
+                <p>Fair and affordable pricing for all our products and services — local and wholesale.</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🌍</div>
+                <h3>Local & Global Reach</h3>
+                <p>Serving Kayunga, Uganda, and international markets with full export compliance.</p>
+            </div>
+            <div class="feature">
+                <div class="icon">📍</div>
+                <h3>Located in Kayunga</h3>
+                <p>Conveniently based in Kayunga District — your local partner with global reach.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <div class="working-hours-highlight">
+            <span class="clock-icon">🕐</span> <strong>Working Hours:</strong> Monday — Sunday | 7:00 AM — 7:00 PM
+        </div>
+        <div class="contact-details">
+            <div class="contact-info-item">
+                <span class="icon">📍</span>
+                <span><strong>Location:</strong> Kayunga District, Uganda</span>
+            </div>
+            <div class="contact-info-item">
+                <span class="icon">📞</span>
+                <span><strong>Tel:</strong> <a href="tel:+256702013189">0702 013 189</a></span>
+            </div>
+            <div class="contact-info-item">
+                <span class="icon">✉️</span>
+                <span><strong>Email:</strong> <a href="mailto:katendemarvivin013@gmail.com">katendemarvivin013@gmail.com</a></span>
+            </div>
+        </div>
+        <div class="email-note">
+            📧 Click the email above — it opens directly in Gmail or your default email app. No setup needed!
+        </div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <input type="text" placeholder="Your Full Name" required>
+            <input type="email" placeholder="Your Email Address" required>
+            <input type="text" placeholder="Subject (e.g., Request Quote / Export Inquiry)">
+            <textarea placeholder="Your Message — tell us what product or service you're interested in." required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <span>Katrivan Business Enterprises Limited</span> — Livestock • Agro Export • Financial Services | Kayunga District, Uganda</p>
+        <p style="margin-top: 0.3rem; font-size: 0.8rem; opacity: 0.7;">Serving Both Local & International Markets</p>
+        <p style="margin-top: 0.3rem; font-size: 0.8rem; opacity: 0.7;">CEO & Owner: Katende Marvin | Shareholder & General Secretary: Mulungi Allan</p>
+        <p style="margin-top: 0.3rem; font-size: 0.8rem; opacity: 0.7;">In collaboration with Bamul Enterprises & Kandrenah Group of Companies</p>
+    </footer>
+
+    <a href="https://wa.me/message/PEGHY5ZYDR5TG1" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp" rel="noopener">💬</a>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            nav.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+        function closeMenu() {
+            const nav = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            nav.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            const header = document.querySelector('header');
+            if (!header.contains(event.target) && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const allItems = document.querySelectorAll('.faq-item');
+            allItems.forEach(item => {
+                if (item !== faqItem && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                }
+            });
+            faqItem.classList.toggle('active');
+        }
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert("Thank you for reaching out to Katrivan Business Enterprises Limited! We will respond to your inquiry shortly.");
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
