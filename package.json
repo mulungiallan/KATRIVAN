@@ -1,0 +1,12 @@
+{
+  "name": "katrivan-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KATRIVAN website",
+  "scripts": {
+    "start": "sh start.sh"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
