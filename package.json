@@ -5,8 +5,5 @@
   "description": "KATRIVAN website",
   "scripts": {
     "start": "sh start.sh"
-  },
-  "dependencies": {
-    "http-server": "^14.1.1"
   }
 }

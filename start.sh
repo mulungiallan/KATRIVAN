@@ -8,7 +8,10 @@ if [ ! -f "index.html" ]; then
   cp "INDEX.html" "index.html"
 fi
 
-# Serve the current directory on Railway's default port (8000) using the
-# Node.js "http-server" npm package (installed via package.json), since
-# Python is not available in the runtime container.
-exec npx --no-install http-server . -p 8000 -a 0.0.0.0
+# Serve the current directory on Railway's default port (8000) using a
+# minimal Node.js static file server (server.js) that binds explicitly to
+# 0.0.0.0. The "http-server" npm package's "-a 0.0.0.0" flag was not
+# reliably binding to all interfaces, which left the server reachable only
+# on 127.0.0.1 / the internal Railway IP and caused 502s on the public
+# domain.
+exec node server.js
